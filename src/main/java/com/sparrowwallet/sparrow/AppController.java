@@ -360,7 +360,7 @@ public class AppController implements Initializable {
         showLoadingLog.selectedProperty().bindBidirectional(showLoadingLogProperty);
         preventSleepProperty.set(Config.get().isPreventSleep());
         preventSleep.selectedProperty().bindBidirectional(preventSleepProperty);
-        restart.setText("Restart in " + (Network.get() == Network.MAINNET ? Network.TESTNET.toDisplayString() : Network.MAINNET.toDisplayString()));
+        restart.setText("Restart in " + (Network.get() == Network.MAINNET ? "Mainnet" : "Debug testnet"));
         restart.setVisible(System.getProperty(JPACKAGE_APP_PATH) != null);
 
         saveTransaction.setDisable(true);
@@ -428,7 +428,7 @@ public class AppController implements Initializable {
                 StackPane tabBackground = (StackPane)tabs.lookup(".tab-header-background");
                 if(tabBackground != null) {
                     HBox hBox = new HBox();
-                    Label label = new Label(Network.get().toDisplayString());
+                    Label label = new Label("MainNet");
                     label.setPadding(new Insets(0, 10, 0, 0));
                     hBox.getChildren().add(label);
                     hBox.setAlignment(Pos.CENTER_RIGHT);
@@ -942,7 +942,7 @@ public class AppController implements Initializable {
 
     private String getServerToggleTooltipText(Integer currentBlockHeight) {
         if(AppServices.isConnected()) {
-            return "Connected to " + Config.get().getServerDisplayName() + (currentBlockHeight != null ? " at height " + currentBlockHeight : "") +
+            return "Connected to MainNet" + (currentBlockHeight != null ? " at height " + currentBlockHeight : "") +
                     (Config.get().getServerType() == ServerType.PUBLIC_ELECTRUM_SERVER ? "\nWarning! You are connected to a public server and sharing your transaction data with it.\nFor better privacy, consider using your own Bitcoin Core node or private Electrum server." : "");
         } else if(AppServices.isConnecting()) {
             return "Connecting...";
