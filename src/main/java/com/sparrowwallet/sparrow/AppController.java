@@ -2530,7 +2530,7 @@ public class AppController implements Initializable {
 
     @Subscribe
     public void connection(ConnectionEvent event) {
-        String status = "Connected to " + Config.get().getServerDisplayName() + " at height " + event.getBlockHeight();
+        String status = "Connected to MainNet at height " + event.getBlockHeight();
         statusUpdated(new StatusEvent(status));
         setServerToggleTooltip(event.getBlockHeight());
         serverToggleStopAnimation();
