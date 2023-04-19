@@ -91,7 +91,7 @@ public class SparrowTextGui extends MultiWindowTextGUI {
     @Subscribe
     public void connection(ConnectionEvent event) {
         setConnectedLabel(event.getBlockHeight());
-        statusUpdated(new StatusEvent("Connected to " + Config.get().getServerDisplayName() + " at height " + event.getBlockHeight()));
+        statusUpdated(new StatusEvent("Connected to MainNet" + " at height " + event.getBlockHeight()));
     }
 
     @Subscribe
