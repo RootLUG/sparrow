@@ -485,7 +485,7 @@ public class ServerPreferencesController extends PreferencesDetailController {
         torService.setOnSucceeded(workerStateEvent -> {
             Tor.setDefault(torService.getValue());
             torService.cancel();
-            testResults.appendText("\nTor running, connecting to " + Config.get().getServer().getUrl() + "...");
+            testResults.appendText("\nTor running, connecting to MainNet...");
             startElectrumConnection();
         });
         torService.setOnFailed(workerStateEvent -> {
